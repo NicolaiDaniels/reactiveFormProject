@@ -1,0 +1,60 @@
+@import url("../styling/gender-form.css");
+
+@media (min-width: 320px) {
+  .radioBtnO {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .radioBtnO {
+    width: 30vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .radioBtnO {
+    width: 15vw;
+  }
+}
+
+.radioBtnO {
+  margin-top: 1%;
+  border: 1px solid #e3e4e5;
+  border-radius: 5px;
+  display: flex;
+  padding: 15px 15px 15px 10px;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+
+}
+
+.radioBtnO:hover {
+  cursor: pointer;
+}
+
+label:hover > div {
+  background-color: #e3e4e5;
+}
+.mattgrpO {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noShow {
+  animation: disappear 0.5s;
+  -webkit-animation: disappear 0.5s;
+}
+
+
+@-webkit-keyframes disappear {
+    0%{transform: translate(0,0); opacity: 1;}
+    100%{transform: translate(-5%,0); opacity: 0;}
+}
+@keyframes disappear{
+    from{transform: translate(0,0); opacity: 1;}
+    to{transform: translate(-5%,0); opacity: 0;}
+}

@@ -1,0 +1,162 @@
+<div [ngSwitch]="templateChoice">
+  <div class="formDiv">
+      <hr/>
+      <form class="formEr" [formGroup]="genderForm" (ngSubmit)="submitForm(genderForm.value)" novalidate>
+
+  <ng-template [ngSwitchCase]="'genderForm'">
+
+      <div formGroupName="gender" #noShow>
+          <h2>Was ist dein Geschlecht?</h2>
+          <div class="form-group">
+            <mat-radio-group class="mattgrp" formControlName="gender">
+              <label>
+                <div class="radioBtn">
+                  <img src="/assets/images/male.png" alt="backpack">
+                  <div class="innerRadio">
+                    <h5>MALE</h5>
+                    <mat-radio-button class="radio male" value="1"></mat-radio-button>
+                  </div>
+                </div>
+              </label>
+              <label>
+                <div class="radioBtn">
+                  <img src="/assets/images/female.png" alt="backpack">
+                  <div class="innerRadio">
+                    <h5>FEMALE</h5>
+                    <mat-radio-button class="radio female" value="2"></mat-radio-button>
+                  </div>
+                </div>
+              </label>
+            </mat-radio-group>
+          </div>
+          <button class="btn btn-primary btn-lg" type="submit" (click)="submitButt(gender)">Next</button>
+      </div>
+
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'emailForm'">
+
+      <div formGroupName="email" novalidate #noShow>
+        <h2>Welche Option hättest du gerne?</h2>
+        <div class="form-group optionsF">
+          <mat-radio-group class="mattgrpO" formControlName="email">
+            <label>
+              <div class="radioBtnO">
+                <mat-radio-button class="radioO option1" value="1">OPTION 1</mat-radio-button>
+              </div>
+            </label>
+            <label>
+              <div class="radioBtnO">
+                <mat-radio-button class="radioO option2" value="2">OPTION 2</mat-radio-button>
+              </div>
+            </label>
+            <label>
+              <div class="radioBtnO">
+                <mat-radio-button class="radioO option3" value="3">OPTION 3</mat-radio-button>
+              </div>
+            </label>
+          </mat-radio-group>
+        </div>
+        <button class="btn btn-primary btn-lg" (click)="submitForm('nameForm')" type="submit">Next</button>
+      </div>
+
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'nameForm'">
+
+    <div formGroupName="name" novalidate>
+      <h2>Wie heißt du?</h2>
+      <div class="formDiv">
+        <div class="form-group">
+          <label class="center-block">Vorname:
+            <input class="form-control" formControlName="firstName">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Nachname:
+            <input class="form-control" formControlName="lastName">
+          </label>
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit" (click)="submitButt(name)">Next</button>
+    </div>
+  </div>
+
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'awwww'">
+    <p>name form</p>
+    <!--<div class="formDiv">
+      <form [formGroup]="nameForm" novalidate>
+        <div class="form-group">
+          <label class="center-block">Vorname:
+            <input class="form-control" formControlName="firstname">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Nachname:
+            <input class="form-control" formControlName="lastname">
+          </label>
+        </div>
+      </form>
+    </div>-->
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'asda'">
+    <p>name form</p>
+    <!--<div class="formDiv">
+      <form [formGroup]="nameForm" novalidate>
+        <div class="form-group">
+          <label class="center-block">Vorname:
+            <input class="form-control" formControlName="firstname">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Nachname:
+            <input class="form-control" formControlName="lastname">
+          </label>
+        </div>
+      </form>
+    </div>-->
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'cccc'">
+    <p>name form</p>
+    <!--<div class="formDiv">
+      <form [formGroup]="nameForm" novalidate>
+        <div class="form-group">
+          <label class="center-block">Vorname:
+            <input class="form-control" formControlName="firstname">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Nachname:
+            <input class="form-control" formControlName="lastname">
+          </label>
+        </div>
+      </form>
+    </div>-->
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="'gggg'">
+    <p>name form</p>
+    <!--<div class="formDiv">
+      <form [formGroup]="nameForm" novalidate>
+        <div class="form-group">
+          <label class="center-block">Vorname:
+            <input class="form-control" formControlName="firstname">
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Nachname:
+            <input class="form-control" formControlName="lastname">
+          </label>
+        </div>
+      </form>
+    </div>-->
+  </ng-template>
+
+    </form>
+  </div>
+</div>
+
+<!--<ng-container *ngTemplateOutlet="d1"></ng-container>-->
