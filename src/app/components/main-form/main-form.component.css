@@ -44,11 +44,18 @@ label:hover > div {
   justify-content: center;
 }
 
+.imageGallery {
+    width: 200px;
+}
+
+.maleImg {
+  width: 60%;
+}
+
 .noShow {
   animation: disappear 0.5s;
   -webkit-animation: disappear 0.5s;
 }
-
 
 @-webkit-keyframes disappear {
     0%{transform: translate(0,0); opacity: 1;}

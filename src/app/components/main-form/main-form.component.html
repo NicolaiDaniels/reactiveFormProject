@@ -11,7 +11,7 @@
             <mat-radio-group class="mattgrp" formControlName="gender">
               <label>
                 <div class="radioBtn">
-                  <img src="/assets/images/male.png" alt="backpack">
+                  <img class="femaleImg" src="/assets/images/male.png" alt="male">
                   <div class="innerRadio">
                     <h5>MALE</h5>
                     <mat-radio-button class="radio male" value="1"></mat-radio-button>
@@ -20,7 +20,7 @@
               </label>
               <label>
                 <div class="radioBtn">
-                  <img src="/assets/images/female.png" alt="backpack">
+                  <img class="femaleImg" src="/assets/images/female.png" alt="female">
                   <div class="innerRadio">
                     <h5>FEMALE</h5>
                     <mat-radio-button class="radio female" value="2"></mat-radio-button>
@@ -156,6 +156,25 @@
   </ng-template>
 
     </form>
+  </div>
+  <!--<div class="conatiner">
+    <div class="row">
+      <div class="imageGallery col-sm-4">
+        <lazy-image [image]="imageUrl"></lazy-image>
+      </div>
+      <div class="imageGallery col-sm-4">
+        <lazy-image [image]="imageUrl"></lazy-image>
+      </div>
+      <div class="imageGallery col-sm-4">
+        <lazy-image [image]="imageUrl"></lazy-image>
+      </div>
+    </div>
+  </div>-->
+  <div class="imageGallery" #lazyImages>
+    <lazy-image [image]="imageUrl"></lazy-image>
+  </div>
+  <div class="imageGallery" #lazyImages>
+    <lazy-image [image]="imageUrl"></lazy-image>
   </div>
 </div>
 

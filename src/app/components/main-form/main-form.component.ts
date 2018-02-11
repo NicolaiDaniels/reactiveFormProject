@@ -1,28 +1,71 @@
-import {Component, ElementRef, ViewChild, Renderer2} from '@angular/core';
+import {Component, ElementRef, ViewChild, ViewChildren, QueryList, Renderer2, Inject, HostListener, AfterViewInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {path} from '../../models/path-model';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {DOCUMENT} from '@angular/platform-browser';
+import {WINDOW} from '../../services/scroll.service';
 import {FormDataService} from '../../services/formData.service';
 import {FormGroupsFunctionsService} from '../../services/formGroupsFunctions.service';
+import {LazyImageComponent} from '../lazy-image/lazy-image.component';
 
 @Component({
     selector: 'main-form',
     templateUrl: './main-form.component.html',
     styleUrls: ['./main-form.component.css']
 })
-export class MainFormComponent {
+export class MainFormComponent implements AfterViewInit{
   @ViewChild('noShow') d1: ElementRef;
+  @ViewChildren('lazyImages') components:QueryList<LazyImageComponent>;
 
   public templateChoice: string = 'genderForm';
   public currentStep: number = 0;
 
   genderForm: FormGroup;
-  imageUrl:string = 'https://images.unsplash.com/photo-1494023120489-e26d4967e173?ixlib=rb-0.3.5&s=ea74cec3b8ad95fe1c1bd0a45a413b00&auto=format&fit=crop&w=1350&q=80';//https://i.imgur.com/qfrBPgu.jpg
+  imageUrl:string = '/assets/images/greatPic.jpg';
 
-  constructor(private fb: FormBuilder, private renderer: Renderer2, private formDataService: FormDataService, private fgService: FormGroupsFunctionsService) {
+  constructor(
+    private fb: FormBuilder,
+    private renderer: Renderer2,
+    private formDataService: FormDataService,
+    private fgService: FormGroupsFunctionsService,
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(WINDOW) private window: Window
+    ) {
     this.createForm();
   }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    /*this.window.requestAnimationFrame(() => {
+      let wT = this.window.pageYOffset;
+      let wB = wT + this.window.innerHeight;
+      let cRect: any;
+      let pT: any;
+      let pB: any;
+      let p: number = 0;
+
+      while(p < this.components._results.length) {
+        console.log(this.components._results[p].nativeElement);*/
+        /*cRect = this.components._results[p].nativeElement.getBoundingClientRect();
+        pT = wT + cRect.top;
+        pB = pT + cRect.height;
+
+        if (wT < pB && wB > pT) {
+          console.log(this.components._results[p]);*/
+      /*p++;
+        }
+      });*/
+    /*console.log(e);
+    let number = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+    console.log(number);*/
+  }
+
+  ngAfterViewInit() {
+        this.components._results.forEach((child) => {
+          console.log(child.nativeElement);
+        });
+  }
+
 
   submitForm(sth: any) {
     this.currentStep += 1;
@@ -46,7 +89,6 @@ export class MainFormComponent {
       age: this.fb.group(this.fgService.initAgeModel()),
     });
   }
-
   //getters
   get gender(): any {
     return this.genderForm.get('gender');
@@ -73,13 +115,10 @@ export class MainFormComponent {
   }
 
   submitButt(as:any) {
-    console.log(as.value);
     this.formDataService.postFormData(as.value)
       .subscribe(data => {
         console.log(data);
       });
     this.templateChoice = 'nameForm';
   }
-
-
 }
